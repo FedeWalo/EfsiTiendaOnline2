@@ -83,19 +83,19 @@
 							</li>
 
 							<li>
-								<a href="product.php">Shop</a>
+								<a href="Productos.php">Shop</a>
 							</li>
 
 							<li class="sale-noti">
-								<a href="product.php">Sale</a>
+								<a href="Productos.php">Sale</a>
 							</li>
 
 							<li>
-								<a href="about.php">About</a>
+								<a href="Nosotros.php">About</a>
 							</li>
 
 							<li>
-								<a href="contact.php">Contact</a>
+								<a href="Contacto.php">Contact</a>
 							</li>
 						</ul>
 					</nav>
@@ -172,7 +172,7 @@
 							<div class="header-cart-buttons">
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
-									<a href="cart.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									<a href="Checkout.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 										View Cart
 									</a>
 								</div>
@@ -270,7 +270,7 @@
 							<div class="header-cart-buttons">
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
-									<a href="cart.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									<a href="Checkout.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 										View Cart
 									</a>
 								</div>
@@ -334,19 +334,19 @@
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="product.php">Shop</a>
+						<a href="Productos.php">Shop</a>
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="product.php">Sale</a>
+						<a href="Productos.php">Sale</a>
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="about.php">About</a>
+						<a href="Nosotros.php">About</a>
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="contact.php">Contact</a>
+						<a href="Contacto.php">Contact</a>
 					</li>
 				</ul>
 			</nav>
