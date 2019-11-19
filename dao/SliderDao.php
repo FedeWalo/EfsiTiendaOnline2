@@ -1,5 +1,5 @@
 <?php
-include_once ($_SERVER["DOCUMENT_ROOT"] . '/tp7/model/Slider.php');
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/EfsiTiendaOnline2/model/Slider.php');
 
 class SliderDao {
     
