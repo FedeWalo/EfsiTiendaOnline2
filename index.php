@@ -359,12 +359,34 @@
 	<!-- Banner -->
 	<?php $ArraySlider = SliderDao::ObtenerTodos();?>
     <section class="slide1">
-        <div class="wrap-slick1">
-        <?php
-            foreach($ArraySlider as $slider){ ?> 
-                    <div class="item-slick1 item1-slick1" style="background-image: url(images/<?php echo $slider->Fotito ?>);"></div>   
-                <?php
-        } ?>
+        <!--<div class="wrap-slick1">
+			<?php
+				foreach($ArraySlider as $slider){ ?> 
+						<div class="item-slick1 item1-slick1" style="background-image: url(images/<?php echo $slider->Fotito ?>);"></div>   
+					<?php
+			} ?>
+			<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">-->
+			
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<?php
+					foreach($ArraySlider as $slider){ ?> 
+						<img src="images/<?php echo $slider->Fotito ?>" class="d-block w-100" alt="slider">  
+					<?php } ?>
+					<!--<img src="..." class="d-block w-100" alt="...">-->
+				</div>
+			</div>
+			<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+
+
 	</section>
 
 	<!-- New Product -->
