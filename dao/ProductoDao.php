@@ -1,5 +1,5 @@
 <?php
-include_once ($_SERVER["DOCUMENT_ROOT"] . '/tp7/model/Producto.php');
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/EfsiTiendaOnline2/model/Producto.php');
 
 class ProductoDao {
     
@@ -71,6 +71,83 @@ class ProductoDao {
         return $arrayProductos;
 
     }
+
+
+    public static function ObtenerPorCategoria($Cat) {
+        //devuelve un array de objetos de tipo persona
+        
+        $arrayProductos = array();
+        $DBH = new PDO("mysql:host=127.0.0.1;dbname=sistema", "root", "");
+
+        $params = array(
+            ":cat"=>$Cat
+        );
+        $query = 'SELECT * FROM productos WHERE Categoria = :cat';
+        $STH = $DBH->prepare($query);
+        $STH->setFetchMode(PDO::FETCH_ASSOC); 
+        
+        $STH->execute();
+        if($STH->rowCount()>0){
+            while($row = $STH->fetch()){
+                $pro = new Producto();
+                $pro->idProducto=$row['idProducto'];        
+                $pro->Nombre=$row['Nombre'];
+                $pro->Codigo=$row['Codigo'];
+                $pro->Precio=$row['Precio'];
+                $pro->Descuento=$row['Descuento'];
+                $pro->StockMinimo=$row['StockMinimo'];
+                $pro->StockActual=$row['StockActual'];
+                $pro->Categoria=$row['Categoria'];
+                $pro->Foto=$row['Foto'];
+                $pro->Video=$row['Video'];
+                $pro->DescripcionCorta=$row['DescripcionCorta'];
+                $pro->DescripcionLarga=$row['DescripcionLarga'];
+                $pro->Destacado=$row['Destacado'];
+                $pro->OnSale=$row['OnSale'];
+                $pro->MostrarHome=$row['MostrarHome'];
+                $arrayProductos[] = $pro;
+            }
+        }
+        return $arrayProductos;
+
+    }
+
+    public static function ObtenerDestacados() {
+        //devuelve un array de objetos de tipo persona
+        
+        $arrayProductos = array();
+        $DBH = new PDO("mysql:host=127.0.0.1;dbname=sistema", "root", "");
+        $query = 'SELECT * FROM productos WHERE Destacado = 1';
+        $STH = $DBH->prepare($query);
+        $STH->setFetchMode(PDO::FETCH_ASSOC); 
+        
+        $STH->execute();
+        if($STH->rowCount()>0){
+            while($row = $STH->fetch()){
+                $pro = new Producto();
+                $pro->idProducto=$row['idProducto'];        
+                $pro->Nombre=$row['Nombre'];
+                $pro->Codigo=$row['Codigo'];
+                $pro->Precio=$row['Precio'];
+                $pro->Descuento=$row['Descuento'];
+                $pro->StockMinimo=$row['StockMinimo'];
+                $pro->StockActual=$row['StockActual'];
+                $pro->Categoria=$row['Categoria'];
+                $pro->Foto=$row['Foto'];
+                $pro->Video=$row['Video'];
+                $pro->DescripcionCorta=$row['DescripcionCorta'];
+                $pro->DescripcionLarga=$row['DescripcionLarga'];
+                $pro->Destacado=$row['Destacado'];
+                $pro->OnSale=$row['OnSale'];
+                $pro->MostrarHome=$row['MostrarHome'];
+                $arrayProductos[] = $pro;
+            }
+        }
+        return $arrayProductos;
+
+    }
+
+
 
     public static function nuevo($Producto) {//$nombre, $codigo, $precio, $descuento, $stockminimo, $stockactual, $categoria, $foto, $video, $descripcioncorta, $descripcionlarga
         //aca va la logica para crear. Recibe por parametro un objeto de tipo persona

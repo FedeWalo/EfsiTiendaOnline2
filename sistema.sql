@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 17-09-2019 a las 20:21:12
+-- Tiempo de generación: 25-11-2019 a las 15:04:17
 -- Versión del servidor: 5.7.21
 -- Versión de PHP: 5.6.35
 
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
 --
 
 INSERT INTO `productos` (`idProducto`, `Nombre`, `Codigo`, `Precio`, `Descuento`, `StockMinimo`, `StockActual`, `Categoria`, `Foto`, `Video`, `DescripcionCorta`, `DescripcionLarga`, `Destacado`, `OnSale`, `MostrarHome`) VALUES
-(3, 'e', 'fe', 2, 2, 2, 2, '18', '4235245', '235235', '4thet', 'tuktuyk', 1, 1, 1);
+(3, 'e', 'fe', 2, 2, 2, 2, '18', 'camiseta.jfif', '235235', '4thet', 'tuktuyk', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -124,14 +124,16 @@ CREATE TABLE IF NOT EXISTS `sliders` (
   `Nombre` varchar(50) NOT NULL,
   `Fotito` varchar(255) NOT NULL,
   PRIMARY KEY (`idSlider`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `sliders`
 --
 
 INSERT INTO `sliders` (`idSlider`, `Nombre`, `Fotito`) VALUES
-(6, 'jkfghkmfh', '69679679');
+(6, 'slider1', 'slider1'),
+(7, 'slider2', 'slider2'),
+(8, 'slider3', 'slider3');
 
 -- --------------------------------------------------------
 

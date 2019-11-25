@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <?php include_once ($_SERVER["DOCUMENT_ROOT"] . '/EfsiTiendaOnline2/dao/SliderDao.php'); ?>
+<?php include_once ($_SERVER["DOCUMENT_ROOT"] . '/EfsiTiendaOnline2/dao/ProductoDao.php'); ?>
 
 	<title>Home</title>
 	<meta charset="UTF-8">
@@ -357,28 +358,27 @@
 	
 
 	<!-- Banner -->
-	<?php $ArraySlider = SliderDao::ObtenerTodos();?>
-
-			
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<?php
-					foreach($ArraySlider as $slider){ ?> 
-						<img src="images/<?php echo $slider->Fotito ?>" class="d-block w-100" alt="slider">  
-					<?php } ?>
-					<!--<img src="..." class="d-block w-100" alt="...">-->
+	<?php $ArraySlider = SliderDao::ObtenerTodos();?>			
+	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner">
+			<?php
+			$i=0;
+			foreach($ArraySlider as $slider){ ?> 
+				<div class="carousel-item <?php echo ($i==0 ? 'active' : ''); ?> ">					
+					<img src="images/<?php echo $slider->Fotito ?>" class="d-block w-100" alt="slider">  					
+				<!--<img src="..." class="d-block w-100" alt="...">-->
 				</div>
-			</div>
-			<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
+			<?php $i++; } ?>
 		</div>
-
+		<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>		
+	</div>
 
 	</section>
 
@@ -390,17 +390,16 @@
 					Featured Products
 				</h3>
 			</div>
-<?php $ArraySlider = SliderDao::ObtenerTodos();?>
+			<?php $ArrayDestacado = ProductoDao::ObtenerDestacados(); ?>
 			<!-- Slide2 -->
 			<div class="wrap-slick2">
 				<div class="slick2">
-				<?php foreach($ArrayDestacado as $Producto)
-				{?>
+				<?php foreach($ArrayDestacado as $Producto) { ?>
 					<div class="item-slick2 p-l-15 p-r-15">
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-								<img src="images/<?php echo $Producto->foto; ?>.jpg" alt="IMG-PRODUCT">
+								<img src="images/<?php echo $Producto->Foto; ?>" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
 									<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -419,13 +418,14 @@
 
 							<div class="block2-txt p-t-20">
 								<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-									<?php echo $Producto->nombre; ?>
+									<?php echo $Producto->Nombre; ?>
 								</a>
 							</div>
 						</div>
 					</div>
+				<?php } ?>
 				</div>
-				<?}?>
+				
 			</div>
 
 		</div>
