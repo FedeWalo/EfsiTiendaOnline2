@@ -35,6 +35,33 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 <!--===============================================================================================-->
 </head>
+<?php 
+
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/EfsiTiendaOnline2/dao/ProductosDao.php');
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/EfsiTiendaOnline2/dao/CategoriasDao.php');
+if (isset($_GET['palabraBusquedad'])){
+	$palabraBusquedad=$_GET['palabraBusquedad']; }
+else{
+	$palabraBusquedad = "";
+}
+if (isset($_GET['idCategoria'])){
+	$idCategoria=$_GET['idCategoria']; }
+else{
+	$idCategoria = -2;
+}
+
+if (isset($_GET['orden'])){
+	$orden=$_GET['orden']; 
+}
+
+else{
+	$orden = "";
+}
+	
+	$ArrayProductos = ProductosDao::ObtenerPorFiltros($idCat,$palabraBus, $orden);	
+	$ArrCategorias = CategoriasDao::ObtenerTodos();
+	
+	?>
 <body class="animsition">
 
 	<!-- Header -->
