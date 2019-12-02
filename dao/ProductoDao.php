@@ -74,73 +74,81 @@ class ProductoDao {
 
     public static function ObtenerPorFiltros($idCategoria, $busquedad, $orden){
         $ordenBien=str_replace("_", " ", $orden);
-            if ($idCategoria > -1){
-                        
-                  if ($ordenBien != ""){
-                       $params = array(                                
-                    ":idCategoria" => $idCategoria
-                    );
-                         $query = 'SELECT * FROM productos where categoria=:idCategoria order By ' . $ordenBien ;
-                    }
-                    else{
-                         $params = array(                                
-                    ":idCategoria" => $idCategoria
-                    );
-                         $query = 'SELECT * FROM productos where categoria=:idCategoria';
-                    }
-                }
-        
-                else if ($busquedad != ""){
-                     
-                  if ($ordenBien != ""){
-                    
-                  $params = array(                                
-                    ":nombre" => $busquedad           
-                    );
-                         $query = 'SELECT * FROM productos where categoria=:idCategoria order By '. $ordenBien;
-                    }
-                    else{
-                        $params = array(                                
-                    ":nombre" => $busquedad
-                              
-                    );
-                
-                         $query = 'SELECT * FROM productos where nombre=:nombre';
-                    }
-                }
-                
-                $BaseDeDatos = new PDO("mysql:host=127.0.0.1;dbname=sistema;charset=UTF8", "root","");
-                $Resul = $BaseDeDatos->prepare($query);
-                $Resul->setFetchMode(PDO::FETCH_ASSOC);
-                $Resul->execute($params);
-                    $arrProd = array(); 
-                if ($Resul->rowCount() > 0) {
-                    
-                    $cont=0;
-                    while($row = $Resul->fetch()) {
-                        $newProd = new producto();
-                        $newProd->id = $row["id"];
-                        $newProd->nombre = $row["nombre"];
-                        $newProd->codigo = $row["codigo"];
-                        $newProd->precio = $row["precio"];
-                        $newProd->descuento = $row["descuento"];
-                        $newProd->stockmin = $row["stockmin"];
-                        $newProd->stockactual = $row["stockactual"];
-                        $newProd->categoria = $row["categoria"];
-                        $newProd->foto = $row["foto"];
-                        $newProd->video= $row["video"];
-                        $newProd->desccorta = $row["desccorta"];
-                        $newProd->desclarga = $row["desclarga"];
-                        $newProd->destacado = $row["destacado"];
-                        $newProd->onsale = $row["onsale"];
-                        $newProd->mostrar = $row["mostrar"];
-                        $arrProd[$cont] =  $newProd; 
-                        $cont++;
-                    }
-                }
-                $BaseDeDatos = null;
-                return $arrProd;
+        $params = null;
+        $query = "";
+        $todos = false;
+        if ($idCategoria > 0){                        
+            if ($ordenBien != ""){
+                $params = array(                                
+                ":idCategoria" => $idCategoria
+                );
+                    $query = 'SELECT * FROM productos where categoria=:idCategoria order By ' . $ordenBien ;
             }
+            else{
+                    $params = array(                                
+                ":idCategoria" => $idCategoria
+                );
+                    $query = 'SELECT * FROM productos where categoria=:idCategoria';
+            }
+        }        
+        else if ($busquedad != ""){                     
+            if ($ordenBien != ""){                    
+                $params = array(                                
+                    ":nombre" => $busquedad           
+                );
+                $query = 'SELECT * FROM productos where nombre like "%":nombre"%" order By '. $ordenBien;
+            }
+            else{
+                $params = array(                                
+                    ":nombre" => $busquedad                                
+                );                
+                $query = 'SELECT * FROM productos where nombre like "%":nombre"%"';
+            }
+        }
+        else{
+            $todos = true;
+            $query = 'SELECT * FROM productos';
+        }
+                
+        $BaseDeDatos = new PDO("mysql:host=127.0.0.1;dbname=sistema;charset=UTF8", "root","");
+        $Resul = $BaseDeDatos->prepare($query);
+        $Resul->setFetchMode(PDO::FETCH_ASSOC);        
+        
+        if($todos)
+            $Resul->execute();
+        else
+            $Resul->execute($params);
+
+        $arrProd = array(); 
+        if ($Resul->rowCount() > 0) {
+            
+            $cont=0;
+            while($row = $Resul->fetch()) {
+                $newProd = new Producto();
+                $newProd->idProducto = $row["idProducto"];
+                $newProd->Nombre = $row["Nombre"];
+                $newProd->Codigo = $row["Codigo"];
+                $newProd->Precio = $row["Precio"];
+                $newProd->Descuento = $row["Descuento"];
+                $newProd->StockMinimo = $row["StockMinimo"];
+                $newProd->StockActual = $row["StockActual"];
+                $newProd->Categoria = $row["Categoria"];
+                $newProd->Foto = $row["Foto"];
+                $newProd->Video= $row["Video"];
+                $newProd->DescripcionCorta = $row["DescripcionCorta"];
+                $newProd->DescripcionLarga = $row["DescripcionLarga"];
+                $newProd->Destacado = $row["Destacado"];
+                $newProd->OnSale = $row["OnSale"];
+                $newProd->MostrarHome = $row["MostrarHome"];
+                $arrProd[$cont] =  $newProd; 
+                $cont++;
+            }
+        }
+        $BaseDeDatos = null;
+        
+        return $arrProd;
+    }
+
     public static function ObtenerPorCategoria($Cat) {
         //devuelve un array de objetos de tipo persona
         
@@ -154,7 +162,7 @@ class ProductoDao {
         $STH = $DBH->prepare($query);
         $STH->setFetchMode(PDO::FETCH_ASSOC); 
         
-        $STH->execute();
+        $STH->execute($params);
         if($STH->rowCount()>0){
             while($row = $STH->fetch()){
                 $pro = new Producto();

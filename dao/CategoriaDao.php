@@ -1,5 +1,5 @@
 <?php
-include_once ($_SERVER["DOCUMENT_ROOT"] . '/tp7/model/Categoria.php');
+include_once ($_SERVER["DOCUMENT_ROOT"] . '/EfsiTiendaOnline2/model/Categoria.php');
 
 class CategoriaDao {
     
