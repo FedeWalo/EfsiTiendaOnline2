@@ -113,7 +113,7 @@ include_once ($_SERVER["DOCUMENT_ROOT"] . '/EfsiTiendaOnline2/dao/ProductoDao.ph
 	<!-- Page info -->
 	<div class="page-top-info">
 		<div class="container">
-			<h4>Category PAge</h4>
+			<h4>Category Page</h4>
 			<div class="site-pagination">
 				<a href="">Home</a> /
 				<a href="">Shop</a>

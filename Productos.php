@@ -460,23 +460,7 @@ else{
 									<option>Price: high to low</option>
 								</select>
 							</div>
-
-							<div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-								<select class="selection-2" name="sorting">
-									<option>Price</option>
-									<option>$0.00 - $50.00</option>
-									<option>$50.00 - $100.00</option>
-									<option>$100.00 - $150.00</option>
-									<option>$150.00 - $200.00</option>
-									<option>$200.00+</option>
-
-								</select>
-							</div>
 						</div>
-
-						<span class="s-text8 p-t-5 p-b-5">
-							Showing 1–12 of 16 results
-						</span>
 					</div>
 
 					<!-- Product -->
@@ -484,10 +468,10 @@ else{
 					$i=0;
 					foreach($ArrayProductos as $Produ){?> 
 							<div class="row">
-								<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
+								<div class="col-sm-12 col-md-3 col-lg-4 p-b-50">
 									<!-- Block2 -->
 									<div class="block2">
-										<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+										<div class="block2-img wrap-pic-w of-hidden pos-relative">
 											<img src="images/<?php echo  $Produ->Foto ?>" alt="IMG-PRODUCT">
 
 											<div class="block2-overlay trans-0-4">
@@ -507,11 +491,11 @@ else{
 
 										<div class="block2-txt p-t-20">
 											<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-												<?php echo $Produ->DescripcionCorta ?>
+												<h6 style="font-weight: bold;"><?php echo $Produ->DescripcionCorta ?></h6>
 											</a>
 
 											<span class="block2-price m-text6 p-r-5">
-												<?php echo $Produ->Precio ?>
+												<h6>$ <?php echo $Produ->Precio ?></h6>
 											</span>
 										</div>
 									</div>

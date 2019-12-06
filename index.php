@@ -398,8 +398,8 @@
 					<div class="item-slick2 p-l-15 p-r-15">
 						<!-- Block2 -->
 						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-								<img src="images/<?php echo $Producto->Foto; ?>" alt="IMG-PRODUCT">
+							<div class="block2-img wrap-pic-w of-hidden pos-relative">
+								<img src="images/<?php echo $Producto->Foto; ?>" alt="IMG-PRODUCT" style="height:230px">
 
 								<div class="block2-overlay trans-0-4">
 									<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">

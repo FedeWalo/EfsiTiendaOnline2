@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 25-11-2019 a las 15:04:17
--- Versión del servidor: 5.7.21
--- Versión de PHP: 5.6.35
+-- Tiempo de generación: 06-12-2019 a las 02:03:25
+-- Versión del servidor: 5.7.24
+-- Versión de PHP: 7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -33,24 +33,17 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   `idCategoria` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(50) NOT NULL,
   PRIMARY KEY (`idCategoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `categorias`
 --
 
 INSERT INTO `categorias` (`idCategoria`, `Nombre`) VALUES
-(10, 'Bermudas'),
-(11, 'Zapatillas'),
-(12, 'Medias'),
-(13, 'Pantalones'),
-(14, 'Sweaters'),
-(15, 'Botines'),
-(16, 'Camisetas de Futbol'),
-(17, 'Canilleras'),
-(18, 'Calzoncillos'),
-(19, 'CorpiÃ±os'),
-(20, 'Jeans');
+(21, 'Formales'),
+(22, 'Urbanas'),
+(23, 'Deportivas'),
+(24, 'Exclusivas');
 
 -- --------------------------------------------------------
 
@@ -103,14 +96,20 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `OnSale` tinyint(4) NOT NULL,
   `MostrarHome` tinyint(4) NOT NULL,
   PRIMARY KEY (`idProducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
 INSERT INTO `productos` (`idProducto`, `Nombre`, `Codigo`, `Precio`, `Descuento`, `StockMinimo`, `StockActual`, `Categoria`, `Foto`, `Video`, `DescripcionCorta`, `DescripcionLarga`, `Destacado`, `OnSale`, `MostrarHome`) VALUES
-(3, 'e', 'fe', 2, 2, 2, 2, '18', 'camiseta.jfif', '235235', '4thet', 'tuktuyk', 1, 1, 1);
+(4, 'Air Force Amarillas', '1234', 5999, 10, 100, 110, '22', 'NikeAirForceAmarillas.jpg', '.', 'Nike Air force Amrillas', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', 1, 1, 1),
+(5, 'Air Force Blancas', '2134', 5000, 100, 10, 110, '22', 'AirForceBlancas.jpg', '.', 'Air Force Blancas', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ve', 0, 1, 0),
+(6, 'Off White Air', '3421', 12300, 5, 5, 10, '24', 'Exclusivas.jpg', '.', 'Off White Air', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel nunc erat.', 1, 1, 1),
+(7, 'Vans Colores', '5342', 3040, 5, 10, 100, '24', 'VansColores.jpg', '.', 'Vans de Colores', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel nunc erat.', 0, 0, 0),
+(8, 'Adidas NMD', '5364', 8999, 5, 130, 400, '23', 'AdidasNMD.jpg', '.', 'Adidas NMD', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel nunc erat.', 1, 1, 1),
+(9, 'Chelsea Boots', '564', 4300, 1, 10, 100, '21', 'ChelseaBoots.jpg', '.', 'Chelsea boots', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel nunc erat.', 1, 1, 1),
+(10, 'Adidas Deerupt', '523', 3500, 0, 10, 100, '23', 'Deerupt.jpg', '.', 'Adidas Deerupt', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel nunc erat.', 1, 1, 1);
 
 -- --------------------------------------------------------
 
